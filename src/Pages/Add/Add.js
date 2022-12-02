@@ -16,9 +16,9 @@ import * as yup from "yup";
 
 
 const validationPost = yup.object().shape({
-    title: yup.string().required("O título do filme é obrigatório").max(50, "O título precisa ter menosde 50 caracteres"),
+    title: yup.string().required("O título do filme é obrigatório").max(50, "O título precisa ter menos de 50 caracteres"),
     year: yup.string().required("O ano de lançamento é obrigatório").max(4, "Formato AAAA").min(4, "Formato AAAA"),
-    time: yup.string().required("A duração do filme é obrigatório").max(3, "Em minutos").min(2, "Em minutos"),
+    director: yup.string().required("O nome do diretor é obrigatório").max(20, "O nome precisa ter menos de 20 caracteres"),
     review: yup.string().required("Review obrigatória, gostou ou não do filme?").max(500, "A review precisa ter menosde 500 caracteres")
     
 });
@@ -59,14 +59,14 @@ function Add() {
                 <p className="error-message">{errors.title?.message}</p>
               </div>
               <div className="fields">
+                <label>Diretor</label>
+                <input type="text" name="director" {...register("director")} />
+                <p className="error-message">{errors.director?.message}</p>
+              </div>
+              <div className="fields">
                 <label>Ano de lançamento</label>
                 <input type="number" name="year" {...register("year")} />
                 <p className="error-message">{errors.year?.message}</p>
-              </div>
-              <div className="fields">
-                <label>Duração</label>
-                <input type="number" name="time" {...register("time")} />
-                <p className="error-message">{errors.time?.message}</p>
               </div>
               <div className="fields">
                 <label>Review</label>
